@@ -146,8 +146,6 @@ update_option( 'atc_settings', $options );
     
     ?>
 
-
-<div style="padding:10px;margin:10px 0 10px 0;">Documentation - <a href="http://www.trottyzone.com/finding-out-your-category-id-number/">Finding out your Category ID number (Category #)</a></div>
 <form name="form" method="post" action="options.php" id="frm1" >
 
 
@@ -318,43 +316,42 @@ width: 100%;
 }
 </style>
 
-
-<table class="widefat" border="1" >
-
-<thead>
-    <tr>
-        <th width="25%" style="text-align:center;"><?php _e('Post', 'atc-menu');  ?></th>
-        <th width="25%" style="text-align:center;"><?php _e('Page', 'atc-menu');  ?></th>   
-                <th width="25%" style="text-align:center;"><?php _e('Categories # to Include', 'atc-menu');  ?></th>
-                <th width="25%" style="text-align:center;"><?php _e('Categories # to Exclude', 'atc-menu');  ?></th>    
-              
-    </tr>
-</thead>
-
-
-<tbody>
-   <tr>
-
-        <td style="text-align:center;"><input name="atc_settings[option][one]" type="checkbox" value="1" <?php if (  1 == ($options['option']['one'])) echo "checked='checked'"; ?> /></td>
-
-        <td style="text-align:center;"><input name="atc_settings[option][two]" type="checkbox" value="1" <?php if (  1 == ($options['option']['two'])) echo "checked='checked'"; ?> /></td>
-
-                <td style="text-align:center;"><input type="text" name="atc_settings[option][three]" value="<?php echo $options['option']['three']; ?>" /></td>
-                
-                <td style="text-align:center;"><input type="text" name="atc_settings[option][four]" value="<?php echo $options['option']['four']; ?>" /></td>
-        
-</tr>
-
-</tbody>
-
-</table>
-
-<table class="widefat" border="1">
-<tr valign="top">
-            <th scope="row" colspan="2" width="20%"><?php _e('Background colors: Click on each field to display the color picker. Click again to close it.', 'atc-menu' ); ?></th>
-            <td width="20%" rowspan="4">
+<table class="form-table">
+    <tbody>
+        <tr>
+            <th scope="row">
+                <label for="posts"><?php _e('Include in Posts', 'atc-menu');  ?></label>
+            </th>
+            <td>
+            <input name="atc_settings[option][one]" type="checkbox" value="1" <?php if (  1 == ($options['option']['one'])) echo "checked='checked'"; ?> />
             </td>
         </tr>
+        
+        <tr>
+            <th scope="row">
+                <label for="posts"><?php _e('Include on Pages', 'atc-menu');  ?></label>
+            </th>
+            <td>
+            <input name="atc_settings[option][two]" type="checkbox" value="1" <?php if (  1 == ($options['option']['two'])) echo "checked='checked'"; ?> />
+            </td>
+        </tr>
+        
+        <tr>
+            <th scope="row">
+                <label for="posts"><?php _e('Categories to Exclude', 'atc-menu');  ?></label>
+            </th>
+            <td>
+            <?php wp_category_checklist(); ?>
+            </td>
+        </tr>
+        
+        
+    </tbody>
+</table>
+
+
+<table class="form-table" border="0" >
+
 
 <tr valign="top">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
@@ -437,26 +434,10 @@ width: 100%;
 <br /><?php _e('Enter an URL, upload or select an existing image for the banner.', 'atc-menu' ); ?>
 </label></td>
 </tr>
-            
-<tr valign="top">
-            <th scope="row" ></th>
-            <td width="20%" ></td>
-        </tr>
 
 <tr><th scope="row"><div style="float:right;"><?php submit_button(); ?></div></th>
 </form>
-
-<td width="20%">
-<div style="float:left;font-weight:700;color:red;">
-PLEASE <a href="http://www.trottyzone.com/donate/">DONATE </a><3 HAVE A HEART :)
-<form style="margin-bottom:-10px;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="5TFAJB5686N8L">
-<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-</td></tr>
+</tr>
 </div>
 
 </table>
