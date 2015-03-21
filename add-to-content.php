@@ -319,123 +319,99 @@ width: 100%;
 <table class="form-table">
     <tbody>
         <tr>
-            <th scope="row">
-                <label for="posts"><?php _e('Include in Posts', 'atc-menu');  ?></label>
-            </th>
-            <td>
-            <input name="atc_settings[option][one]" type="checkbox" value="1" <?php if (  1 == ($options['option']['one'])) echo "checked='checked'"; ?> />
-            </td>
+            <th scope="row"><?php _e('Content Types', 'atc-menu');  ?></th>
+                <td>
+                    <fieldset>
+                        <label for="atc_settings[option][one]">
+                            <input name="atc_settings[option][one]" type="checkbox" value="1" <?php if (  1 == ($options['option']['one'])) echo "checked='checked'"; ?> />
+                            <?php _e('Include in Posts'); ?>
+                        </label>
+                        <br />
+                        <label for="atc_settings[option][two]">
+                            <input name="atc_settings[option][two]" type="checkbox" value="1" <?php if (  1 == ($options['option']['two'])) echo "checked='checked'"; ?> />
+                            <?php _e('Include on Pages'); ?>
+                        </label>
+                    </fieldset>
+                </td>
         </tr>
-        
-        <tr>
-            <th scope="row">
-                <label for="posts"><?php _e('Include on Pages', 'atc-menu');  ?></label>
-            </th>
-            <td>
-            <input name="atc_settings[option][two]" type="checkbox" value="1" <?php if (  1 == ($options['option']['two'])) echo "checked='checked'"; ?> />
-            </td>
-        </tr>
-        
+
         <tr>
             <th scope="row">
                 <label for="posts"><?php _e('Categories to Exclude', 'atc-menu');  ?></label>
             </th>
             <td>
-            <?php wp_category_checklist(); ?>
+                <fieldset>
+                    <?php wp_category_checklist(); ?>
+                </fieldset>
             </td>
         </tr>
-        
         
     </tbody>
 </table>
 
-
-<table class="form-table" border="0" >
-
-
-<tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-<th width="20%"><?php _e("Top Content: ", 'atc-menu' ); ?> </th>
-<td width="80%"><textarea name="atc_settings[top][text]" style="height:100px;width:100%;"><?php echo esc_attr( $options['top']['text'] ); ?></textarea></td>
-</tr>
-
-<tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-<th width="20%"><?php _e("Tick to Enable Top Content: ", 'atc-menu' ); ?> </th>
-<td><input name="atc_settings[top][check]" type="checkbox" value="1" <?php if (  1 == ($options['top']['check'])) echo "checked='checked'"; ?> /></td>
-</tr>
-
-        <tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Background color', 'atc-menu' ); ?></th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['bc'] ); ?>" name="atc_settings[top][bc]" id="color1" />
-            <div id="colorpicker1"></div></td>
+<table class="form-table">
+    <tbody>
+        <tr>
+            <th scope="row"><?php _e("Top Content: ", 'atc-menu' ); ?></th>
+                <td>
+                    <fieldset>
+                        <input name="atc_settings[top][check]" type="checkbox" value="1" <?php if (  1 == ($options['top']['check'])) echo "checked='checked'"; ?> />
+                        <?php _e("Enable Top Content", 'atc-menu' ); ?>
+                        <br /><br />
+                        <p>Top Text:</p>
+                        <textarea name="atc_settings[top][text]" style="height:100px;width:100%;"><?php echo esc_attr( $options['top']['text'] ); ?></textarea>
+                        <br />
+                        <br />
+                        <input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['bc'] ); ?>" name="atc_settings[top][bc]" id="color1" />
+                        <?php _e("Background Color");?>
+                        <div id="colorpicker1"></div>
+                        <br />
+                        <input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['tc'] ); ?>" name="atc_settings[top][tc]" id="color2" />
+                        <?php _e("Text Color");?>
+                        <div id="colorpicker2"></div>
+                        <br />
+                        <br />
+                        <?php _e('Enter an URL, upload or select an existing image for the banner.', 'atc-menu' ); ?>
+                        <input id="upload_image" type="text" size="36" name="atc_settings[top][upi]" value="<?php echo $options['top']['upi']; ?>" /> 
+                        <input id="upload_image_button" class="button" type="button" value="Upload Image" />
+                        <br />
+                        
+                    </fieldset>
+                </td>
+            </th>
         </tr>
-
-                <tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Text color', 'atc-menu' ); ?></th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['tc'] ); ?>" name="atc_settings[top][tc]" id="color2" />
-            <div id="colorpicker2"></div></td>
+        <tr>
+            <th scope="row"><?php _e("Bottom Content: ", 'atc-menu' ); ?></th>
+                <td>
+                    <fieldset>
+                        <input name="atc_settings[bottom][check]" type="checkbox" value="1" <?php if (  1 == ($options['bottom']['check'])) echo "checked='checked'"; ?> />
+                        <?php _e("Enable Bottom Content", 'atc-menu' ); ?>
+                        <br /><br />
+                        <p>Top Text:</p>
+                        <textarea name="atc_settings[bottom][text]" style="height:100px;width:100%;"><?php echo esc_attr( $options['bottom']['text'] ); ?></textarea>
+                        <br />
+                        <br />
+                        <input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['bc'] ); ?>" name="atc_settings[bottom][bc]" id="color3" />
+                        <?php _e("Background Color");?>
+                        <div id="colorpicker3"></div>
+                        <br />
+                        <input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['tc'] ); ?>" name="atc_settings[bottom][tc]" id="color4" />
+                        <?php _e("Text Color");?>
+                        <div id="colorpicker4"></div>
+                        <br />
+                        <br />
+                        <?php _e('Enter an URL, upload or select an existing image for the banner.', 'atc-menu' ); ?>
+                        <input id="upload_image" type="text" size="36" name="atc_settings[bottom][upi]" value="<?php echo $options['bottom']['upi']; ?>" /> 
+                        <input id="upload_image_button" class="button" type="button" value="Upload Image" />
+                        <br />
+                    </fieldset>
+                </td>
+            </th>
         </tr>
+    </tbody>
+</table>
 
-<tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-<th scope="row"><?php _e('Choose Image', 'atc-menu' ); ?></th>
-<td><label for="upload_image">
-<input id="upload_image" type="text" size="36" name="atc_settings[top][upi]" value="<?php echo $options['top']['upi']; ?>" /> 
-<input id="upload_image_button" class="button" type="button" value="Upload Image" />
-<br /><?php _e('Enter an URL, upload or select an existing image for the banner.', 'atc-menu' ); ?>
-</label></td>
-</tr>
-
-
-<tr valign="top">
-            <th scope="row" ></th>
-            <td width="20%" ></td>
-        </tr>
-
-
-
-<tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-<th width="20%"><?php _e('Bottom Content: ', 'atc-menu' ); ?>  </th>
-<td width="80%"><textarea name="atc_settings[bottom][text]" style="height:100px;width:100%;"><?php echo esc_attr( $options['bottom']['text'] ); ?></textarea>
-</td>
-</tr>
-
-<tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-<th width="20%"><?php _e("Tick to Enable Bottom Content: ", 'atc-menu' ); ?> </th>
-<td><input name="atc_settings[bottom][check]" type="checkbox" value="1" <?php if (  1 == ($options['bottom']['check'])) echo "checked='checked'"; ?> /></td>
-</tr>
-
-                 <tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Background color', 'atc-menu' ); ?> </th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['bc'] ); ?>" name="atc_settings[bottom][bc]" id="color3" />
-            <div id="colorpicker3"></div></td>
-        </tr>
-                
-                <tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Text color', 'atc-menu' ); ?> </th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['tc'] ); ?>" name="atc_settings[bottom][tc]" id="color4" />
-            <div id="colorpicker4"></div></td>
-        </tr>
-
-
-<tr valign="top">
-<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-<th scope="row"><?php _e('Choose Image', 'atc-menu' ); ?></th>
-<td><label for="upload_image">
-<input id="upload_image2" type="text" size="36" name="atc_settings[bottom][upi]" value="<?php echo esc_attr( $options['bottom']['upi'] ); ?>" /> 
-<input id="upload_image_button2" class="button" type="button" value="Upload Image" />
-<br /><?php _e('Enter an URL, upload or select an existing image for the banner.', 'atc-menu' ); ?>
-</label></td>
-</tr>
-
-<tr><th scope="row"><div style="float:right;"><?php submit_button(); ?></div></th>
+<tr><th scope="row"><div style="float:left;"><?php submit_button(); ?></div></th>
 </form>
 </tr>
 </div>
