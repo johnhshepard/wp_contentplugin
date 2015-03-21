@@ -35,28 +35,28 @@ load_plugin_textdomain('atc-menu', false, dirname(plugin_basename(__FILE__)) . '
 register_activation_hook( __FILE__, 'atc_install' );
 register_uninstall_hook( __FILE__, 'atc_uninstall' );
 function atc_uninstall() {
-    delete_option( 'atc_settings' );
+	delete_option( 'atc_settings' );
 }
 function atc_install() {
-    $defaults = array( 'top' => array(
-            'text'  => __( 'Example Top Text', 'atc-menu' ),
+	$defaults = array( 'top' => array(
+			'text'  => __( 'Example Top Text', 'atc-menu' ),
                         'check' => __( '1', 'atc-menu' ),
-            'bc' => __( '#fff', 'atc-menu' ),
+			'bc' => __( '#fff', 'atc-menu' ),
                         'tc'  => __( '#333', 'atc-menu' ),
-            'upi' => __( 'http://www.example.com/picture.jpg', 'atc-menu' )
-                            
-        
-    ),
+			'upi' => __( 'http://www.example.com/picture.jpg', 'atc-menu' )
+                        	
+		
+	),
                            'bottom' => array( 
                         'text'  => __( 'Example Bottom Text', 'atc-menu' ),
                         'check' => __( '1', 'atc-menu' ), 
-            'bc' => __( '#fff', 'atc-menu' ),
+			'bc' => __( '#fff', 'atc-menu' ),
                         'tc'  => __( '#333', 'atc-menu' ),
-            'upi' => __( 'http://www.example.com/picture.jpg', 'atc-menu' )
+			'upi' => __( 'http://www.example.com/picture.jpg', 'atc-menu' )
                              )
           );
 
-    add_option( 'atc_settings', apply_filters( 'atc_defaults', $defaults ) );
+	add_option( 'atc_settings', apply_filters( 'atc_defaults', $defaults ) );
 }
 
 // Hook for adding admin menus
@@ -68,10 +68,10 @@ if ( is_admin() ){ // admin actions
   add_action( 'admin_init', 'atc_register_setting' );
 
        // Hook to fire farbtastic includes for using built in WordPress color picker functionality
-    add_action('admin_enqueue_scripts', 'atc_farbtastic_script');
+	add_action('admin_enqueue_scripts', 'atc_farbtastic_script');
 
 // Display the 'Settings' link in the plugin row on the installed plugins list page
-    add_filter( 'plugin_action_links_'.plugin_basename(__FILE__), 'atc_admin_plugin_actions', -10);
+	add_filter( 'plugin_action_links_'.plugin_basename(__FILE__), 'atc_admin_plugin_actions', -10);
 
 
 } else { // non-admin enqueues, actions, and filters
@@ -81,9 +81,9 @@ if ( is_admin() ){ // admin actions
 // Include WordPress color picker functionality
 function atc_farbtastic_script() {
 
-    // load the style and script for farbtastic
-    wp_enqueue_style( 'farbtastic' );
-    wp_enqueue_script( 'farbtastic' );
+	// load the style and script for farbtastic
+	wp_enqueue_style( 'farbtastic' );
+	wp_enqueue_script( 'farbtastic' );
         wp_enqueue_media();
 
 }
@@ -95,7 +95,7 @@ function atc_op_page() {
     // Add a new submenu under Settings:
     add_options_page(__('Add To Content','atc-menu'), __('Add To Content','atc-menu'), 'manage_options', __FILE__, 'atc_settings_page');
 }
-function atc_register_setting() {   
+function atc_register_setting() {	
 register_setting( 'atc_options', 'atc_settings' );
 }
 
@@ -108,9 +108,9 @@ function atc_settings_page() {
       wp_die( __('You do not have sufficient permissions to access this page.') );
     }
 
-    // variables for the field and option names 
+	// variables for the field and option names 
     $hidden_field_name = 'atc_submit_hidden';
-    
+	
 
 // read options values
 $options = get_option( 'atc_settings' );
@@ -152,60 +152,60 @@ update_option( 'atc_settings', $options );
 
 
 <?php
-            settings_fields( 'atc_options' );
-            $options = get_option( 'atc_settings' );
+        	settings_fields( 'atc_options' );
+			$options = get_option( 'atc_settings' );
 
 //checks to see if empty then populates values
 
 if ($options['top']['bc']== '')
-    {
-    $options['top']['bc'] = '#fff'; 
-    }
+	{
+	$options['top']['bc'] = '#fff'; 
+	}
 if ($options['top']['tc']== '')
-    {
-    $options['top']['tc'] = '#333'; 
-    }
+	{
+	$options['top']['tc'] = '#333'; 
+	}
 if ($options['bottom']['bc']== '')
-    {
-    $options['bottom']['bc'] = '#fff'; 
-    }
+	{
+	$options['bottom']['bc'] = '#fff'; 
+	}
 if ($options['bottom']['tc']== '')
-    {
-    $options['bottom']['tc'] = '#333'; 
-    }
+	{
+	$options['bottom']['tc'] = '#333'; 
+	}
 ?>
 
-        
+		
 <script type="text/javascript">
 
-        jQuery(document).ready(function() {
-            jQuery('#colorpicker1').hide();
-            jQuery('#colorpicker1').farbtastic("#color1");
-            jQuery("#color1").click(function(){jQuery('#colorpicker1').slideToggle()});
+		jQuery(document).ready(function() {
+			jQuery('#colorpicker1').hide();
+			jQuery('#colorpicker1').farbtastic("#color1");
+			jQuery("#color1").click(function(){jQuery('#colorpicker1').slideToggle()});
           
-        });
+		});
                 
                 jQuery(document).ready(function() {
-            jQuery('#colorpicker2').hide();
-            jQuery('#colorpicker2').farbtastic("#color2");
-            jQuery("#color2").click(function(){jQuery('#colorpicker2').slideToggle()});
+			jQuery('#colorpicker2').hide();
+			jQuery('#colorpicker2').farbtastic("#color2");
+			jQuery("#color2").click(function(){jQuery('#colorpicker2').slideToggle()});
                         
-        });
+		});
 
                 
-        jQuery(document).ready(function() {
-            jQuery('#colorpicker3').hide();
-            jQuery('#colorpicker3').farbtastic("#color3");
-            jQuery("#color3").click(function(){jQuery('#colorpicker3').slideToggle()});
+		jQuery(document).ready(function() {
+			jQuery('#colorpicker3').hide();
+			jQuery('#colorpicker3').farbtastic("#color3");
+			jQuery("#color3").click(function(){jQuery('#colorpicker3').slideToggle()});
           
-        });
+		});
                 
                 jQuery(document).ready(function() {
-            jQuery('#colorpicker4').hide();
-            jQuery('#colorpicker4').farbtastic("#color4");
-            jQuery("#color4").click(function(){jQuery('#colorpicker4').slideToggle()});
+			jQuery('#colorpicker4').hide();
+			jQuery('#colorpicker4').farbtastic("#color4");
+			jQuery("#color4").click(function(){jQuery('#colorpicker4').slideToggle()});
                         
-        });
+		});
 
 jQuery(document).ready(function($){
  
@@ -310,7 +310,7 @@ str = str.replace(/post_category/g, "pk");
 }); 
 })
 (jQuery); 
-    </script>
+	</script>
 
 <style type="text/css">
 #upload_image, #upload_image2 {
@@ -322,13 +322,13 @@ width: 100%;
 <table class="widefat" border="1" >
 
 <thead>
-    <tr>
-        <th width="25%" style="text-align:center;"><?php _e('Post', 'atc-menu');  ?></th>
-        <th width="25%" style="text-align:center;"><?php _e('Page', 'atc-menu');  ?></th>   
+	<tr>
+		<th width="25%" style="text-align:center;"><?php _e('Post', 'atc-menu');  ?></th>
+		<th width="25%" style="text-align:center;"><?php _e('Page', 'atc-menu');  ?></th>	
                 <th width="25%" style="text-align:center;"><?php _e('Categories # to Include', 'atc-menu');  ?></th>
-                <th width="25%" style="text-align:center;"><?php _e('Categories # to Exclude', 'atc-menu');  ?></th>    
+                <th width="25%" style="text-align:center;"><?php _e('Categories # to Exclude', 'atc-menu');  ?></th>	
               
-    </tr>
+	</tr>
 </thead>
 
 
@@ -351,10 +351,15 @@ width: 100%;
 
 <table class="widefat" border="1">
 <tr valign="top">
-            <th scope="row" colspan="2" width="20%"><?php _e('Background colors: Click on each field to display the color picker. Click again to close it.', 'atc-menu' ); ?></th>
-            <td width="20%" rowspan="4">
-            </td>
-        </tr>
+			<th scope="row" colspan="2" width="20%"><?php _e('Background colors: Click on each field to display the color picker. Click again to close it.', 'atc-menu' ); ?></th>
+			<td width="20%" rowspan="4">
+				<div id="colorpicker1"></div>
+                                <div id="colorpicker2"></div>
+                                <div id="colorpicker3"></div>
+                                <div id="colorpicker4"></div>
+				
+			</td>
+		</tr>
 
 <tr valign="top">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
@@ -368,19 +373,17 @@ width: 100%;
 <td><input name="atc_settings[top][check]" type="checkbox" value="1" <?php if (  1 == ($options['top']['check'])) echo "checked='checked'"; ?> /></td>
 </tr>
 
-        <tr valign="top">
+		<tr valign="top">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Background color', 'atc-menu' ); ?></th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['bc'] ); ?>" name="atc_settings[top][bc]" id="color1" />
-            <div id="colorpicker1"></div></td>
-        </tr>
+			<th scope="row"><?php _e('Background color', 'atc-menu' ); ?></th>
+			<td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['bc'] ); ?>" name="atc_settings[top][bc]" id="color1" /></td>
+		</tr>
 
                 <tr valign="top">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Text color', 'atc-menu' ); ?></th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['tc'] ); ?>" name="atc_settings[top][tc]" id="color2" />
-            <div id="colorpicker2"></div></td>
-        </tr>
+			<th scope="row"><?php _e('Text color', 'atc-menu' ); ?></th>
+			<td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['top']['tc'] ); ?>" name="atc_settings[top][tc]" id="color2" /></td>
+		</tr>
 
 <tr valign="top">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
@@ -394,9 +397,9 @@ width: 100%;
 
 
 <tr valign="top">
-            <th scope="row" ></th>
-            <td width="20%" ></td>
-        </tr>
+			<th scope="row" ></th>
+			<td width="20%" ></td>
+		</tr>
 
 
 
@@ -415,17 +418,15 @@ width: 100%;
 
                  <tr valign="top">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Background color', 'atc-menu' ); ?> </th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['bc'] ); ?>" name="atc_settings[bottom][bc]" id="color3" />
-            <div id="colorpicker3"></div></td>
-        </tr>
+			<th scope="row"><?php _e('Background color', 'atc-menu' ); ?> </th>
+			<td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['bc'] ); ?>" name="atc_settings[bottom][bc]" id="color3" /></td>
+		</tr>
                 
                 <tr valign="top">
 <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-            <th scope="row"><?php _e('Text color', 'atc-menu' ); ?> </th>
-            <td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['tc'] ); ?>" name="atc_settings[bottom][tc]" id="color4" />
-            <div id="colorpicker4"></div></td>
-        </tr>
+			<th scope="row"><?php _e('Text color', 'atc-menu' ); ?> </th>
+			<td width="20%"><input type="text" maxlength="7" size="6" value="<?php echo esc_attr( $options['bottom']['tc'] ); ?>" name="atc_settings[bottom][tc]" id="color4" /></td>
+		</tr>
 
 
 <tr valign="top">
@@ -439,9 +440,9 @@ width: 100%;
 </tr>
             
 <tr valign="top">
-            <th scope="row" ></th>
-            <td width="20%" ></td>
-        </tr>
+			<th scope="row" ></th>
+			<td width="20%" ></td>
+		</tr>
 
 <tr><th scope="row"><div style="float:right;"><?php submit_button(); ?></div></th>
 </form>
@@ -470,56 +471,56 @@ $atc_plugin_links = array(
            '<a href="http://www.trottyzone.com/forums/forum/website-support/">'.__('Support').'</a>', 
                              );
 
-    return array_merge( $atc_plugin_links, $links );
+	return array_merge( $atc_plugin_links, $links );
 
 }
 
 function add_to_content001($content) {
 
-    $options = get_option( 'atc_settings' );
+	$options = get_option( 'atc_settings' );
 
-    if (is_page()) {
-        if (1 == ($options['option']['two'])) {
-            if ( 1 == ($options['top']['check']) ) {
-                $content = '<div style="color:'.$options['top']['tc'].';background-color:'.$options['top']['bc'].';background-image: url('.$options['top']['upi'].');">'.$options['top']['text'].'</div>' . $content;
-            }
-            if ( 1 == ($options['bottom']['check']) ) {
-                $content = $content . '<div style="color:'.$options['bottom']['tc'].';background-color:'.$options['bottom']['bc'].';background-image: url('.$options['bottom']['upi'].');">'.$options['bottom']['text'].'</div>';
-            }
-        }
-    } elseif (is_single()) {
-        if (1 == ($options['option']['one'])) {
+	if (is_page()) {
+		if (1 == ($options['option']['two'])) {
+			if ( 1 == ($options['top']['check']) ) {
+				$content = '<div style="color:'.$options['top']['tc'].';background-color:'.$options['top']['bc'].';background-image: url('.$options['top']['upi'].');">'.$options['top']['text'].'</div>' . $content;
+			}
+			if ( 1 == ($options['bottom']['check']) ) {
+				$content = $content . '<div style="color:'.$options['bottom']['tc'].';background-color:'.$options['bottom']['bc'].';background-image: url('.$options['bottom']['upi'].');">'.$options['bottom']['text'].'</div>';
+			}
+		}
+	} elseif (is_single()) {
+		if (1 == ($options['option']['one'])) {
 
-        //look at included and excluded Categories
-            
-            if (!empty($options['option']['three'])){
-                $multiCategoriesInclude= $options['option']['three'];
-                // move into usable array
-                $multiCategoriesIncludeArray=explode(',',$multiCategoriesInclude);
+		//look at included and excluded Categories
+			
+			if (!empty($options['option']['three'])){
+				$multiCategoriesInclude= $options['option']['three'];
+				// move into usable array
+				$multiCategoriesIncludeArray=explode(',',$multiCategoriesInclude);
 
 
-                if (in_category($multiCategoriesIncludeArray)) {
-                    if ( 1 == ($options['top']['check']) ){
-                        $content = '<div style="color:'.$options['top']['tc'].';background-color:'.$options['top']['bc'].';background-image: url('.$options['top']['upi'].');">'.$options['top']['text'].'</div>' . $content;
-                    }
-                    if ( 1 == ($options['bottom']['check']) ){
-                        $content = $content . '<div style="color:'.$options['bottom']['tc'].';background-color:'.$options['bottom']['bc'].';background-image: url('.$options['bottom']['upi'].');">'.$options['bottom']['text'].'</div>';
-                    }
-                }
-            } elseif (!empty ($options['option']['four'] )){
-                $multiCategoriesExclude= $options['option']['four'];
-                // move into usable array
-                $multiCategoriesArrayExclude=explode(',',$multiCategoriesExclude);
-        
-                if (!in_category($multiCategoriesArrayExclude)) {
-                    if ( 1 == ($options['top']['check']) ){
-                        $content = '<div style="color:'.$options['top']['tc'].';background-color:'.$options['top']['bc'].';background-image: url('.$options['top']['upi'].');">'.$options['top']['text'].'</div>' . $content;
-                    }
-                    if ( 1 == ($options['bottom']['check']) ){
-                        $content = $content . '<div style="color:'.$options['bottom']['tc'].';background-color:'.$options['bottom']['bc'].';background-image: url('.$options['bottom']['upi'].');">'.$options['bottom']['text'].'</div>';
-                    }   
-                }
-            } else {
+				if (in_category($multiCategoriesIncludeArray)) {
+					if ( 1 == ($options['top']['check']) ){
+						$content = '<div style="color:'.$options['top']['tc'].';background-color:'.$options['top']['bc'].';background-image: url('.$options['top']['upi'].');">'.$options['top']['text'].'</div>' . $content;
+					}
+					if ( 1 == ($options['bottom']['check']) ){
+						$content = $content . '<div style="color:'.$options['bottom']['tc'].';background-color:'.$options['bottom']['bc'].';background-image: url('.$options['bottom']['upi'].');">'.$options['bottom']['text'].'</div>';
+					}
+				}
+			} elseif (!empty ($options['option']['four'] )){
+				$multiCategoriesExclude= $options['option']['four'];
+				// move into usable array
+				$multiCategoriesArrayExclude=explode(',',$multiCategoriesExclude);
+		
+				if (!in_category($multiCategoriesArrayExclude)) {
+					if ( 1 == ($options['top']['check']) ){
+						$content = '<div style="color:'.$options['top']['tc'].';background-color:'.$options['top']['bc'].';background-image: url('.$options['top']['upi'].');">'.$options['top']['text'].'</div>' . $content;
+					}
+					if ( 1 == ($options['bottom']['check']) ){
+						$content = $content . '<div style="color:'.$options['bottom']['tc'].';background-color:'.$options['bottom']['bc'].';background-image: url('.$options['bottom']['upi'].');">'.$options['bottom']['text'].'</div>';
+					}	
+				}
+			} else {
                 if ( 1 == ($options['top']['check']) ){
                     $content = '<div style="color:'.$options['top']['tc'].';background-color:'.$options['top']['bc'].';background-image: url('.$options['top']['upi'].');">'.$options['top']['text'].'</div>' . $content;
                 }
@@ -527,11 +528,10 @@ function add_to_content001($content) {
                     $content = $content . '<div style="color:'.$options['bottom']['tc'].';background-color:'.$options['bottom']['bc'].';background-image: url('.$options['bottom']['upi'].');">'.$options['bottom']['text'].'</div>';
                 }       
             }
-        }
-    }
+		}
+	}
 return $content;
 }
 
 add_filter('the_content', 'add_to_content001');
-
 
