@@ -401,8 +401,8 @@ width: 100%;
                         <br />
                         <br />
                         <?php _e('Enter an URL, upload or select an existing image for the banner.', 'atc-menu' ); ?>
-                        <input id="upload_image" type="text" size="36" name="atc_settings[bottom][upi]" value="<?php echo $options['bottom']['upi']; ?>" /> 
-                        <input id="upload_image_button" class="button" type="button" value="Upload Image" />
+                        <input id="upload_image2" type="text" size="36" name="atc_settings[bottom][upi]" value="<?php echo $options['bottom']['upi']; ?>" /> 
+                        <input id="upload_image_button2" class="button" type="button" value="Upload Image" />
                         <br />
                     </fieldset>
                 </td>
