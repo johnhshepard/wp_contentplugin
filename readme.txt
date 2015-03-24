@@ -1,11 +1,12 @@
 === Add To Content ===
-Contributors: Emark
-Donate link: http://www.trottyzone.com/donation/
+Contributors: johnhshepard, 
+Donate link: http://www.shepardproject.com/donation/
 Tags: add to content, add content, content, add to, add to page, add category, post, posts, pages, support, note, custom, content, add to post, ads, content, disclaimer, form, forms, signup, gesture, about me, about, media, media upload, image
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 2.0
-License: GPL2 or later
+Stable tag: 1.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Place custom content above or below every post and/or page or from a specific category.
 
@@ -59,13 +60,8 @@ Ask your questions away at the plugin <a href="http://www.trottyzone.com/forums/
 = 1.0 =
 * Initial release on WordPress.org
 
-= 2.0 =
-Download fix
 
 == Changelog ==
 
 = 1.0 =
 * Initial release on WordPress.org
-
-= 2.0 =
-Download fix
